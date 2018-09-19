@@ -12,6 +12,10 @@ class Game {
     let numberOfPlayers = 2
     var players = [Player]()
     
+    init(name: String) {
+        self.name = name
+    }
+    
     // Définit le joueur attaquant
     func getActualPlayer() -> Player {
         return self.players[self.round % self.numberOfPlayers]
@@ -26,10 +30,6 @@ class Game {
     var isGameOver: Bool {
         let playersAlive = self.players.filter{ $0.isAlive }.count // Nombre de joueurs en vie
         return playersAlive == 1 ? true : false
-    }
-    
-    init(name: String) {
-        self.name = name
     }
     
     // Récupère le vainqueur du jeu
