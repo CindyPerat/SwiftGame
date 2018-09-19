@@ -7,6 +7,33 @@
 //
 
 class Game {
-    let name = "SwiftGame"
+    let name: String
+    var round = 0
+    let numberOfPlayers = 2
     var players = [Player]()
+    
+    // Définit le joueur attaquant
+    func getActualPlayer() -> Player {
+        return self.players[self.round % self.numberOfPlayers]
+    }
+    
+    // Récupère le joueur adverse
+    func getOpposingPlayer(actualPlayer: Player) -> Player {
+        return self.players.filter{ $0 !== actualPlayer }[0]
+    }
+    
+    // Indique si la partie est terminée (quand il ne reste plus qu'un joueur en vie)
+    var isGameOver: Bool {
+        let playersAlive = self.players.filter{ $0.isAlive }.count // Nombre de joueurs en vie
+        return playersAlive == 1 ? true : false
+    }
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    // Récupère le vainqueur du jeu
+    func getWinner() -> Player {
+        return self.players.filter{ $0.isAlive }[0]
+    }
 }

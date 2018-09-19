@@ -13,6 +13,10 @@ class Character {
     var type: CharacterType
     var lifePoints: Int
     
+    var isAlive: Bool {
+        return lifePoints > 0 ? true : false
+    }
+    
     init(id: Int, playerId: Int, name: String, type: CharacterType, lifePoints: Int) {
         self.id = id
         self.playerId = playerId

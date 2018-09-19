@@ -6,8 +6,10 @@
 //  Copyright © 2018 Cindy Perat. All rights reserved.
 //
 
+// INITIALISATION DU JEU -----------------------------------------------------------------------------------------------
+
 var test = true // À passer à true pour le test de l'application
-var game = Game()
+var game = Game(name: "SwiftGame")
 
 print("\(game.name) - NOUVELLE PARTIE")
 
@@ -17,16 +19,20 @@ if test {
     // ÉQUIPE 1
     let player1 = Player(id: 1, name: "Cindy")
     player1.team.append(Fighter(id: 1, playerId: 1, name: "Toto"))
+    player1.team.append(Mage(id: 2, playerId: 1, name: "Toutou"))
+    player1.team.append(Colossus(id: 3, playerId: 1, name: "Tutu"))
     
     // ÉQUIPE 2
     let player2 = Player(id: 2, name: "Steve")
     player2.team.append(Dwarf(id: 1, playerId: 2, name: "Titi"))
+    player2.team.append(Fighter(id: 2, playerId: 2, name: "Best Fighter Ever"))
+    player2.team.append(Mage(id: 3, playerId: 2, name: "Best Mage Ever"))
     
     game.players.append(player1)
     game.players.append(player2)
 } else {
     // 2 ÉQUIPES
-    for playerId in 1...2 {
+    for playerId in 1...game.numberOfPlayers {
         print("\n-----------------------------")
         print("           ÉQUIPE \(playerId)       ")
         print("-----------------------------")
@@ -40,7 +46,7 @@ if test {
         let player = Player(id: playerId, name: playerName)
         
         // 3 PERSONNAGES PAR ÉQUIPE
-        for characterId in 1...3 {
+        for characterId in 1...player.numberOfCharacters {
             print("\n-----------------------------")
             print("         PERSONNAGE \(characterId)     ")
             print("-----------------------------")
@@ -56,7 +62,7 @@ if test {
             print("  2. " + capitalizeFirstLetter(CharacterType.mage.rawValue))
             print("  3. " + capitalizeFirstLetter(CharacterType.colossus.rawValue))
             print("  4. " + capitalizeFirstLetter(CharacterType.dwarf.rawValue))
-            print("Votre choix : ", terminator: "")
+            print("Numéro du personnage : ", terminator: "")
             
             if let choice = readLine() {
                 switch choice {
@@ -78,32 +84,75 @@ if test {
     }
 }
 
-/*print("\n-----------------------------")
-print("           RÉSUMÉ            ")
-print("-----------------------------")
-
-for (playerIndex,player) in game.players.enumerated() {
-    print("\nÉQUIPE \(playerIndex + 1) : \(player.name)")
-    
-    for (characterIndex,character) in player.team.enumerated() {
-        print("  \(characterIndex + 1). " + capitalizeFirstLetter(character.type.rawValue) + " - \(character.name)")
-    }
-}*/
-
 summary(game: game)
 
-/*print("\n-----------------------------")
+// DÉBUT DU COMBAT -----------------------------------------------------------------------------------------------------
+
+print("\n-----------------------------")
 print("     DÉBUT DE LA PARTIE      ")
 print("-----------------------------")
 
-print("C'est Cindy qui ouvre le bal !")
-print("Cindy, quel personnage de ton équipe choisis-tu ?")
-print("Contre qui souhaites-tu attaquer ?")
+while (!game.isGameOver) {
+    let actualPlayer = game.getActualPlayer()
+    
+    print("\n-----------------------------")
+    print("           MANCHE \(game.round + 1)          ")
+    print("-----------------------------")
+    
+    if game.round == 0 {
+        print("\nC'est \(capitalizeFirstLetter(actualPlayer.name)) qui commence la partie !")
+    } else {
+        print("\nAu tour de \(actualPlayer.name) !")
+    }
+    
+    print("\nAvec quel personnage de votre équipe voulez-vous jouer ?")
+    let attackingCharacter = selectCharacter(player: actualPlayer)
+    print(attackingCharacter.name)
+    
+    if attackingCharacter.type == .mage {
+        print("\nQuel personnage de votre équipe voulez-vous soigner ?")
+        let defendingCharacter = selectCharacter(player: actualPlayer, previouslySelected: attackingCharacter)
+        
+        // Ajouter les points de vie
+        
+        print("\n\(actualPlayer.name) a choisi de soigner son équipe...")
+        print("\(defendingCharacter.name) récupére X points de vie !")
+    } else {
+        print("\nContre qui souhaitez-vous attaquer ?")
+        let defendingCharacter = selectCharacter(player: game.getOpposingPlayer(actualPlayer: actualPlayer))
+        
+        // Retirer les points de vie au personnage de l'équipe adverse
+        
+        print("\n\(actualPlayer.name) a choisi d'infliger des dégâts à l'équipe adverse...")
+        print("\(attackingCharacter.name) contre \(defendingCharacter.name) !")
+    }
+    
+    game.round += 1
+    
+    pressEnterToContinue()
+    summary(game: game)
+    pressEnterToContinue()
+}
 
-print("Cindy a choisi d'infliger des dégâts à l'équipe adverse")
-print("Cindy a choisi de soigner son équipe")*/
+// VAINQUEUR -----------------------------------------------------------------------------------------------------------
 
-// Afficher résumé
+//print("\n-----------------------------")
+//print("          VAINQUEUR          ")
+//print("-----------------------------")
+
+//print("Bravo \(game.getWinner().name), tu as gagné !")
+
+
+// STATISTIQUES DE FIN DE PARTIE ---------------------------------------------------------------------------------------
+
+//print("\n-----------------------------")
+//print("         STATISTIQUES        ")
+//print("-----------------------------")
+
+//print("\nNombre de tours : \(game.round + 1)")
+//print("Arme la plus utilisée : ")
+//print("Arme la moins utilisée : ")
+//print("Nombre de soins : ")
 
 
 
