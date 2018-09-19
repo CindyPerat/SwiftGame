@@ -150,11 +150,11 @@ while (!game.isGameOver) {
 
 // VAINQUEUR -----------------------------------------------------------------------------------------------------------
 
-//print("\n-----------------------------")
-//print("       FIN DE LA PARTIE      ")
-//print("-----------------------------")
+print("\n-----------------------------")
+print("       FIN DE LA PARTIE      ")
+print("-----------------------------")
 
-//print("Bravo \(game.getWinner().name), tu as gagné !")
+print("\nBravo \(game.getWinner().name), tu as gagné !")
 
 
 // STATISTIQUES DE FIN DE PARTIE ---------------------------------------------------------------------------------------
