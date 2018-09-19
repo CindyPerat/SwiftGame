@@ -28,8 +28,7 @@ class Game {
     }
     
     func randomAttackWeapon() -> Weapon? {
-        //if Int.random(in: 1...3) == 1 {
-        if 1 == 1 {
+        if Int.random(in: 1...3) == 1 {
             return self.attackWeapons.randomElement()!
         }
         
