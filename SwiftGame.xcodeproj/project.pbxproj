@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C22FF214215247B9007B3812 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22FF213215247B9007B3812 /* Weapon.swift */; };
+		C22FF216215247E8007B3812 /* WeaponType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22FF215215247E8007B3812 /* WeaponType.swift */; };
+		C22FF21821524833007B3812 /* Sword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22FF21721524833007B3812 /* Sword.swift */; };
+		C22FF21A21524876007B3812 /* Axe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22FF21921524876007B3812 /* Axe.swift */; };
+		C22FF21C21524B4A007B3812 /* Bandage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22FF21B21524B4A007B3812 /* Bandage.swift */; };
+		C22FF21E21524D7C007B3812 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22FF21D21524D7C007B3812 /* Rocket.swift */; };
 		C28FD3EB21464E960062F485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28FD3EA21464E960062F485 /* main.swift */; };
 		C28FD3F42146548C0062F485 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28FD3F32146548C0062F485 /* Player.swift */; };
 		C28FD3F6214655030062F485 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28FD3F5214655030062F485 /* Game.swift */; };
@@ -32,6 +38,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C22FF213215247B9007B3812 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		C22FF215215247E8007B3812 /* WeaponType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponType.swift; sourceTree = "<group>"; };
+		C22FF21721524833007B3812 /* Sword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sword.swift; sourceTree = "<group>"; };
+		C22FF21921524876007B3812 /* Axe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axe.swift; sourceTree = "<group>"; };
+		C22FF21B21524B4A007B3812 /* Bandage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bandage.swift; sourceTree = "<group>"; };
+		C22FF21D21524D7C007B3812 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		C28FD3E721464E960062F485 /* SwiftGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		C28FD3EA21464E960062F485 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C28FD3F32146548C0062F485 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -85,6 +97,12 @@
 				C28FD3FB214663040062F485 /* Mage.swift */,
 				C28FD3FD214663330062F485 /* Colossus.swift */,
 				C28FD3FF214663680062F485 /* Dwarf.swift */,
+				C22FF213215247B9007B3812 /* Weapon.swift */,
+				C22FF215215247E8007B3812 /* WeaponType.swift */,
+				C22FF21721524833007B3812 /* Sword.swift */,
+				C22FF21921524876007B3812 /* Axe.swift */,
+				C22FF21D21524D7C007B3812 /* Rocket.swift */,
+				C22FF21B21524B4A007B3812 /* Bandage.swift */,
 			);
 			path = SwiftGame;
 			sourceTree = "<group>";
@@ -149,13 +167,19 @@
 				C28FD3FA214661C80062F485 /* Fighter.swift in Sources */,
 				C28FD400214663680062F485 /* Dwarf.swift in Sources */,
 				C28FD3F42146548C0062F485 /* Player.swift in Sources */,
+				C22FF216215247E8007B3812 /* WeaponType.swift in Sources */,
 				C28FD3F8214655A90062F485 /* Character.swift in Sources */,
 				C28FD3FE214663330062F485 /* Colossus.swift in Sources */,
 				C2DB3544214BC29500D278DA /* functions.swift in Sources */,
+				C22FF21C21524B4A007B3812 /* Bandage.swift in Sources */,
+				C22FF214215247B9007B3812 /* Weapon.swift in Sources */,
+				C22FF21A21524876007B3812 /* Axe.swift in Sources */,
 				C28FD3EB21464E960062F485 /* main.swift in Sources */,
 				C28FD3F6214655030062F485 /* Game.swift in Sources */,
 				C28FD3FC214663040062F485 /* Mage.swift in Sources */,
+				C22FF21821524833007B3812 /* Sword.swift in Sources */,
 				C2DB3546214BC2E100D278DA /* CharacterType.swift in Sources */,
+				C22FF21E21524D7C007B3812 /* Rocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

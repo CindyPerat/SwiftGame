@@ -8,6 +8,6 @@
 
 class Fighter: Character {
     init(id: Int, playerId: Int, name: String) {
-        super.init(id: id, playerId: playerId, name: name, type: .fighter, lifePoints: 100)
+        super.init(id: id, playerId: playerId, name: name, type: .fighter, lifePoints: 100, weapon: Sword())
     }
 }

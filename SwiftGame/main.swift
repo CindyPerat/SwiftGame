@@ -113,18 +113,19 @@ while (!game.isGameOver) {
         print("\nQuel personnage de votre équipe voulez-vous soigner ?")
         let defendingCharacter = selectCharacter(player: actualPlayer, previouslySelected: attackingCharacter)
         
-        // Ajouter les points de vie
+        defendingCharacter.isTreated(by: attackingCharacter) // Soigner un personnage de son équipe
         
         print("\n\(actualPlayer.name) a choisi de soigner son équipe...")
-        print("\(defendingCharacter.name) récupére X points de vie !")
+        print("\(defendingCharacter.name) récupére \(attackingCharacter.weapon.addingLifePoints) points de vie !")
     } else {
         print("\nContre qui souhaitez-vous attaquer ?")
         let defendingCharacter = selectCharacter(player: game.getOpposingPlayer(actualPlayer: actualPlayer))
         
-        // Retirer les points de vie au personnage de l'équipe adverse
+        defendingCharacter.isAttacked(by: attackingCharacter) // Retirer des PDV au personnage de l'équipe adverse
         
         print("\n\(actualPlayer.name) a choisi d'infliger des dégâts à l'équipe adverse...")
-        print("\(attackingCharacter.name) contre \(defendingCharacter.name) !")
+        print("\(attackingCharacter.name) contre \(defendingCharacter.name)...")
+        print("\(defendingCharacter.name) perd \(attackingCharacter.weapon.removalLifePoints) points de vie !")
     }
     
     game.round += 1

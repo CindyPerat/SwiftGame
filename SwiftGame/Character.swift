@@ -12,16 +12,26 @@ class Character {
     var name: String
     var type: CharacterType
     var lifePoints: Int
+    var weapon: Weapon
     
     var isAlive: Bool {
         return lifePoints > 0 ? true : false
     }
     
-    init(id: Int, playerId: Int, name: String, type: CharacterType, lifePoints: Int) {
+    init(id: Int, playerId: Int, name: String, type: CharacterType, lifePoints: Int, weapon: Weapon) {
         self.id = id
         self.playerId = playerId
         self.name = name
         self.type = type
         self.lifePoints = lifePoints
+        self.weapon = weapon
+    }
+    
+    func isAttacked(by attackingCharacter: Character) {
+        self.lifePoints -= attackingCharacter.weapon.removalLifePoints
+    }
+    
+    func isTreated(by attackingCharacter: Character) {
+        self.lifePoints += attackingCharacter.weapon.addingLifePoints
     }
 }

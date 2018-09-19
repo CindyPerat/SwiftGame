@@ -8,6 +8,6 @@
 
 class Dwarf: Character {
     init(id: Int, playerId: Int, name: String) {
-        super.init(id: id, playerId: playerId, name: name, type: .dwarf, lifePoints: 20)
+        super.init(id: id, playerId: playerId, name: name, type: .dwarf, lifePoints: 20, weapon: Axe())
     }
 }
