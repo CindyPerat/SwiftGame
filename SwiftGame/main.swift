@@ -86,7 +86,7 @@ if test {
 
 summary(game: game)
 
-// DÉBUT DU COMBAT -----------------------------------------------------------------------------------------------------
+// COMBAT --------------------------------------------------------------------------------------------------------------
 
 print("\n-----------------------------")
 print("     DÉBUT DE LA PARTIE      ")
@@ -100,32 +100,41 @@ while (!game.isGameOver) {
     print("-----------------------------")
     
     if game.round == 0 {
-        print("\nC'est \(capitalizeFirstLetter(actualPlayer.name)) qui commence la partie !")
+        print("\nC'est \(actualPlayer.name) qui commence la partie !")
     } else {
         print("\nAu tour de \(actualPlayer.name) !")
     }
     
     print("\nAvec quel personnage de votre équipe voulez-vous jouer ?")
-    let attackingCharacter = selectCharacter(player: actualPlayer)
+    let attackingCharacter = selectCharacter(from: actualPlayer)
     let defendingCharacter:Character
     
-    if attackingCharacter.type == .mage {
+    if attackingCharacter.type == .mage { // Soin
         print("\nQuel personnage de votre équipe voulez-vous soigner ?")
-        defendingCharacter = selectCharacter(player: actualPlayer, previouslySelected: attackingCharacter)
+        defendingCharacter = selectCharacter(from: actualPlayer, previouslySelected: attackingCharacter)
         
-        defendingCharacter.isTreated(by: attackingCharacter) // Soigner un personnage de son équipe
+        // Soigner un personnage de son équipe
+        defendingCharacter.isTreated(with: attackingCharacter.weapon)
         
         print("\n\(actualPlayer.name) a choisi de soigner son équipe...")
         print("\(defendingCharacter.name) récupére \(attackingCharacter.weapon.addingLifePoints) points de vie !")
-    } else {
-        print("\nContre qui souhaitez-vous attaquer ?")
-        defendingCharacter = selectCharacter(player: game.getOpposingPlayer(actualPlayer: actualPlayer))
+    } else { // Attaque
+        var weapon = attackingCharacter.weapon
         
-        defendingCharacter.isAttacked(by: attackingCharacter) // Retirer des PDV au personnage de l'équipe adverse
+        if let randomAttackWeapon = game.randomAttackWeapon() {
+            weapon = randomAttackWeapon
+            print("\nSURPRISE ! \(attackingCharacter.name) est équipé d'une nouvelle arme \"\(weapon.name.rawValue)\" !")
+        }
+        
+        print("\nContre qui souhaitez-vous attaquer ?")
+        defendingCharacter = selectCharacter(from: game.getOpposingPlayer(against: actualPlayer))
+        
+        // Retirer des PDV au personnage de l'équipe adverse
+        defendingCharacter.isAttacked(with: weapon)
         
         print("\n\(actualPlayer.name) a choisi d'infliger des dégâts à l'équipe adverse...")
         print("\(attackingCharacter.name) contre \(defendingCharacter.name)...")
-        print("\(defendingCharacter.name) perd \(attackingCharacter.weapon.removalLifePoints) points de vie !")
+        print("\(defendingCharacter.name) perd \(weapon.removalLifePoints) points de vie !")
     }
     
     if !defendingCharacter.isAlive {

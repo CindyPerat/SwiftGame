@@ -27,11 +27,11 @@ class Character {
         self.weapon = weapon
     }
     
-    func isAttacked(by attackingCharacter: Character) {
-        self.lifePoints -= attackingCharacter.weapon.removalLifePoints
+    func isAttacked(with weapon: Weapon) {
+        self.lifePoints -= weapon.removalLifePoints
     }
     
-    func isTreated(by attackingCharacter: Character) {
-        self.lifePoints += attackingCharacter.weapon.addingLifePoints
+    func isTreated(with weapon: Weapon) {
+        self.lifePoints += weapon.addingLifePoints
     }
 }

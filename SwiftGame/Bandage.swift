@@ -8,6 +8,6 @@
 
 class Bandage: Weapon {
     init() {
-        super.init(type: .care, removalLifePoints: 0, addingLifePoints: 20)
+        super.init(name: .bandage, type: .care, removalLifePoints: 0, addingLifePoints: 20)
     }
 }

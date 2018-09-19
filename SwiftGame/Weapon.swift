@@ -7,11 +7,13 @@
 //
 
 class Weapon {
+    var name: WeaponName
     var type: WeaponType
     var removalLifePoints: Int
     var addingLifePoints: Int
     
-    init(type: WeaponType, removalLifePoints: Int, addingLifePoints: Int) {
+    init(name: WeaponName, type: WeaponType, removalLifePoints: Int, addingLifePoints: Int) {
+        self.name = name
         self.type = type
         self.removalLifePoints = removalLifePoints
         self.addingLifePoints = addingLifePoints

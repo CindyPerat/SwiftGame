@@ -8,6 +8,6 @@
 
 class Rocket: Weapon {
     init() {
-        super.init(type: .attack, removalLifePoints: 5, addingLifePoints: 0)
+        super.init(name: .rocket, type: .attack, removalLifePoints: 5, addingLifePoints: 0)
     }
 }

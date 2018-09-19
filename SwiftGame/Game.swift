@@ -11,6 +11,7 @@ class Game {
     var round = 0
     let numberOfPlayers = 2
     var players = [Player]()
+    var attackWeapons = [Sword(), Axe(), Rocket()]
     
     init(name: String) {
         self.name = name
@@ -22,8 +23,17 @@ class Game {
     }
     
     // Récupère le joueur adverse
-    func getOpposingPlayer(actualPlayer: Player) -> Player {
+    func getOpposingPlayer(against actualPlayer: Player) -> Player {
         return self.players.filter{ $0 !== actualPlayer }[0]
+    }
+    
+    func randomAttackWeapon() -> Weapon? {
+        //if Int.random(in: 1...3) == 1 {
+        if 1 == 1 {
+            return self.attackWeapons.randomElement()!
+        }
+        
+        return nil
     }
     
     // Indique si la partie est terminée (quand il ne reste plus qu'un joueur en vie)

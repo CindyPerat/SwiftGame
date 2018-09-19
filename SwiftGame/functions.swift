@@ -35,9 +35,10 @@ func summary(game: Game) {
     }
 }
 
-func selectCharacter(player: Player, previouslySelected: Character? = nil) -> Character {
+func selectCharacter(from player: Player, previouslySelected: Character? = nil) -> Character {
     var characters = player.team
     
+    // Retire le personnage déjà sélectionné de la liste
     if let previousCharacter = previouslySelected, previousCharacter.type == .mage {
         characters = player.team.filter{ $0.type != .mage }
     }

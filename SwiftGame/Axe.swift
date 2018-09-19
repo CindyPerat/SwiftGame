@@ -8,6 +8,6 @@
 
 class Axe: Weapon {
     init() {
-        super.init(type: .attack, removalLifePoints: 50, addingLifePoints: 0)
+        super.init(name: .axe, type: .attack, removalLifePoints: 50, addingLifePoints: 0)
     }
 }
