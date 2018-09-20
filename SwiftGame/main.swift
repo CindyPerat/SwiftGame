@@ -6,20 +6,9 @@
 //  Copyright © 2018 Cindy Perat. All rights reserved.
 //
 
-var test = true // À passer à true pour le test de l'application
+var test = true // true to test application
 
-// INITIALISATION DU JEU -----------------------------------------------------------------------------------------------
-
-printInitialization(test: test)
-
-// COMBAT --------------------------------------------------------------------------------------------------------------
-
-printFight()
-
-// VAINQUEUR -----------------------------------------------------------------------------------------------------------
-
-printWinner()
-
-// STATISTIQUES DE FIN DE PARTIE ---------------------------------------------------------------------------------------
-
-printStatistics()
+printInitialization(test: test) // Game init
+printFight() // Fight
+printWinner() // Winner
+printStatistics() // Statistics
