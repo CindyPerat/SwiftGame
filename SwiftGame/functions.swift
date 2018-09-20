@@ -18,12 +18,12 @@ func pressEnterToContinue() {
 }
 
 // Affiche les équipes et les points de vie de chaque personnage
-func summary(game: Game) {
+func summary() {
     print("\n-----------------------------")
     print("           RÉSUMÉ            ")
     print("-----------------------------")
     
-    for player in game.players {
+    for player in Game.players {
         print("\nÉQUIPE \(player.id) : \(player.name)")
         
         for character in player.team {

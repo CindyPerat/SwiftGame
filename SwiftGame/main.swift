@@ -9,9 +9,8 @@
 // INITIALISATION DU JEU -----------------------------------------------------------------------------------------------
 
 var test = true // À passer à true pour le test de l'application
-var game = Game(name: "SwiftGame")
 
-print("\(game.name) - NOUVELLE PARTIE")
+print("\(Game.name) - NOUVELLE PARTIE")
 
 if test {
     print("\nInitialisation automatique...")
@@ -28,11 +27,11 @@ if test {
     player2.team.append(Fighter(id: 2, playerId: 2, name: "Best Fighter Ever"))
     player2.team.append(Mage(id: 3, playerId: 2, name: "Best Mage Ever"))
     
-    game.players.append(player1)
-    game.players.append(player2)
+    Game.players.append(player1)
+    Game.players.append(player2)
 } else {
     // 2 ÉQUIPES
-    for playerId in 1...game.numberOfPlayers {
+    for playerId in 1...Game.numberOfPlayers {
         print("\n-----------------------------")
         print("           ÉQUIPE \(playerId)       ")
         print("-----------------------------")
@@ -80,11 +79,11 @@ if test {
             }
         }
         
-        game.players.append(player)
+        Game.players.append(player)
     }
 }
 
-summary(game: game)
+summary()
 
 // COMBAT --------------------------------------------------------------------------------------------------------------
 
@@ -92,14 +91,14 @@ print("\n-----------------------------")
 print("     DÉBUT DE LA PARTIE      ")
 print("-----------------------------")
 
-while (!game.isGameOver) {
-    let actualPlayer = game.getActualPlayer()
+while (!Game.isGameOver) {
+    let actualPlayer = Game.getActualPlayer()
     
     print("\n-----------------------------")
-    print("           MANCHE \(game.round + 1)          ")
+    print("           MANCHE \(Game.round + 1)          ")
     print("-----------------------------")
     
-    if game.round == 0 {
+    if Game.round == 0 {
         print("\nC'est \(actualPlayer.name) qui commence la partie !")
     } else {
         print("\nAu tour de \(actualPlayer.name) !")
@@ -121,13 +120,13 @@ while (!game.isGameOver) {
     } else { // Attaque
         var weapon = attackingCharacter.weapon
         
-        if let randomAttackWeapon = game.randomAttackWeapon() {
+        if let randomAttackWeapon = Game.randomAttackWeapon() {
             weapon = randomAttackWeapon
             print("\nSURPRISE ! \(attackingCharacter.name) est équipé d'une nouvelle arme \"\(weapon.name.rawValue)\" !")
         }
         
         print("\nContre qui souhaitez-vous attaquer ?")
-        defendingCharacter = selectCharacter(from: game.getOpposingPlayer(against: actualPlayer))
+        defendingCharacter = selectCharacter(from: Game.getOpposingPlayer(against: actualPlayer))
         
         // Retirer des PDV au personnage de l'équipe adverse
         defendingCharacter.isAttacked(with: weapon)
@@ -141,10 +140,10 @@ while (!game.isGameOver) {
         print("\(defendingCharacter.name) vient de mourir...")
     }
     
-    game.round += 1
+    Game.round += 1
     
     pressEnterToContinue()
-    summary(game: game)
+    summary()
     pressEnterToContinue()
 }
 
@@ -154,7 +153,7 @@ print("\n-----------------------------")
 print("       FIN DE LA PARTIE      ")
 print("-----------------------------")
 
-print("\nBravo \(game.getWinner().name), tu as gagné !")
+print("\nBravo \(Game.getWinner().name), tu as gagné !")
 
 
 // STATISTIQUES DE FIN DE PARTIE ---------------------------------------------------------------------------------------
@@ -163,6 +162,6 @@ print("\n-----------------------------")
 print("         STATISTIQUES        ")
 print("-----------------------------\n")
 
-for (name, value) in game.getStatistics() {
+for (name, value) in Game.getStatistics() {
     print("\(name) : \(value)")
 }
