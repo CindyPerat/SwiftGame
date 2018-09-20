@@ -159,15 +159,10 @@ print("\nBravo \(game.getWinner().name), tu as gagné !")
 
 // STATISTIQUES DE FIN DE PARTIE ---------------------------------------------------------------------------------------
 
-//print("\n-----------------------------")
-//print("         STATISTIQUES        ")
-//print("-----------------------------")
+print("\n-----------------------------")
+print("         STATISTIQUES        ")
+print("-----------------------------\n")
 
-//print("\nNombre de tours : \(game.round + 1)")
-//print("Arme la plus utilisée : ")
-//print("Arme la moins utilisée : ")
-//print("Nombre de soins : ")
-
-
-
-
+for (name, value) in game.getStatistics() {
+    print("\(name) : \(value)")
+}

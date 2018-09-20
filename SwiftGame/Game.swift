@@ -45,4 +45,10 @@ class Game {
     func getWinner() -> Player {
         return self.players.filter{ $0.isAlive }[0]
     }
+    
+    func getStatistics() -> [String:Int] {
+        return [
+            "Nombre de tours": game.round + 1
+        ]
+    }
 }
