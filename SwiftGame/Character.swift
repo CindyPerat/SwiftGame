@@ -14,6 +14,9 @@ class Character {
     var lifePoints: Int
     var weapon: Weapon
     
+    /**
+     Return `true` if character is still alive or `false`
+     */
     var isAlive: Bool {
         return lifePoints > 0 ? true : false
     }
@@ -27,10 +30,18 @@ class Character {
         self.weapon = weapon
     }
     
+    /**
+     Run attack action
+     - parameter weapon: Weapon used to attack
+     */
     func isAttacked(with weapon: Weapon) {
         self.lifePoints -= weapon.removalLifePoints
     }
     
+    /**
+     Run care action
+     - parameter weapon: Weapon used to treat character
+     */
     func isTreated(with weapon: Weapon) {
         self.lifePoints += weapon.addingLifePoints
     }
