@@ -13,20 +13,39 @@ class Game {
     var players = [Player]()
     var attackWeapons = [Sword(), Axe(), Rocket()]
     
+    /**
+     Define if game is over (when only one team is alive)
+     */
+    var isGameOver: Bool {
+        let playersAlive = self.players.filter{ $0.isAlive }.count // Nombre de joueurs en vie
+        return playersAlive == 1 ? true : false
+    }
+    
     init(name: String) {
         self.name = name
     }
     
-    // Définit le joueur attaquant
+    /**
+     Define attacking player
+     - returns: Attacking player
+     */
     func getActualPlayer() -> Player {
         return self.players[self.round % self.numberOfPlayers]
     }
     
-    // Récupère le joueur adverse
+    /**
+     Define opposing player
+     - parameter actualPlayer: Attacking player
+     - returns: Opposing player
+     */
     func getOpposingPlayer(against actualPlayer: Player) -> Player {
         return self.players.filter{ $0 !== actualPlayer }[0]
     }
     
+    /**
+     Generate random attack weapon
+     - returns: Attack weapon
+     */
     func randomAttackWeapon() -> Weapon? {
         if Int.random(in: 1...3) == 1 {
             return self.attackWeapons.randomElement()!
@@ -35,17 +54,18 @@ class Game {
         return nil
     }
     
-    // Indique si la partie est terminée (quand il ne reste plus qu'un joueur en vie)
-    var isGameOver: Bool {
-        let playersAlive = self.players.filter{ $0.isAlive }.count // Nombre de joueurs en vie
-        return playersAlive == 1 ? true : false
-    }
-    
-    // Récupère le vainqueur du jeu
+    /**
+     Define the winner
+     - returns: Player who won the game
+     */
     func getWinner() -> Player {
         return self.players.filter{ $0.isAlive }[0]
     }
     
+    /**
+     Define game statistics
+     - returns: Array with name and value for each statistic
+     */
     func getStatistics() -> [String:Int] {
         return [
             "Nombre de tours": game.round + 1
