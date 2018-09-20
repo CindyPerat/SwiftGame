@@ -6,17 +6,27 @@
 //  Copyright © 2018 Cindy Perat. All rights reserved.
 //
 
-// Met la première lettre d'un mot en majuscule et le reste en minuscule
+/**
+ Uppercase first letter of text
+ - parameter text: Text to edit
+ - returns: Text edited with first letter capitalized
+ */
 func capitalizeFirstLetter(_ text: String) -> String {
     return text.prefix(1).uppercased() + text.dropFirst()
 }
 
-// Marque une pause dans le déroulé du programme
+/**
+ Pause application and wait for user action to continue
+ */
 func pressEnterToContinue() {
     print("\nAppuyez sur entrée pour continuer...", terminator: "")
     let _ = readLine()
 }
 
+/**
+ Display game initialization with creation of teams and characters
+ - parameter test: `true` to test application, otherwise `false`
+ */
 func printInitialization(test: Bool) {
     print("\(Game.name) - NOUVELLE PARTIE")
     
@@ -94,6 +104,9 @@ func printInitialization(test: Bool) {
     printSummary()
 }
 
+/**
+ Display fight
+ */
 func printFight() {
     print("\n-----------------------------")
     print("     DÉBUT DE LA PARTIE      ")
@@ -116,16 +129,15 @@ func printFight() {
         let attackingCharacter = selectCharacter(from: actualPlayer)
         let defendingCharacter:Character
         
-        if attackingCharacter.type == .mage { // Soin
+        if attackingCharacter.type == .mage {
             print("\nQuel personnage de votre équipe voulez-vous soigner ?")
             defendingCharacter = selectCharacter(from: actualPlayer, previouslySelected: attackingCharacter)
             
-            // Soigner un personnage de son équipe
             defendingCharacter.isTreated(with: attackingCharacter.weapon)
             
             print("\n\(actualPlayer.name) a choisi de soigner son équipe...")
             print("\(defendingCharacter.name) récupére \(attackingCharacter.weapon.addingLifePoints) points de vie !")
-        } else { // Attaque
+        } else {
             var weapon = attackingCharacter.weapon
             
             if let randomAttackWeapon = Game.randomAttackWeapon() {
@@ -156,6 +168,9 @@ func printFight() {
     }
 }
 
+/**
+ Display winner
+ */
 func printWinner() {
     print("\n-----------------------------")
     print("       FIN DE LA PARTIE      ")
@@ -164,6 +179,9 @@ func printWinner() {
     print("\nBravo \(Game.getWinner().name), tu as gagné !")
 }
 
+/**
+ Display statistics
+ */
 func printStatistics() {
     print("\n-----------------------------")
     print("         STATISTIQUES        ")
@@ -174,10 +192,16 @@ func printStatistics() {
     }
 }
 
+/**
+ Handle and display selection of character
+ - parameter player: Selected player
+ - parameter previouslySelected: Character previously selected (used when mage has been selected as attacking character)
+ - returns: Text edited with first letter capitalized
+ */
 func selectCharacter(from player: Player, previouslySelected: Character? = nil) -> Character {
     var characters = player.team
     
-    // Retire le personnage déjà sélectionné de la liste
+    // Remove mage from the list if he's been previously selected as attacking character
     if let previousCharacter = previouslySelected, previousCharacter.type == .mage {
         characters = player.team.filter{ $0.type != .mage }
     }
@@ -205,7 +229,9 @@ func selectCharacter(from player: Player, previouslySelected: Character? = nil) 
     }
 }
 
-// Affiche les équipes et les points de vie de chaque personnage
+/**
+ Display life points for each character
+ */
 func printSummary() {
     print("\n-----------------------------")
     print("           RÉSUMÉ            ")
