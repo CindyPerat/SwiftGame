@@ -13,6 +13,16 @@ class Game {
     static var players = [Player]()
     static var attackWeapons = [Sword(), Axe(), Rocket()]
     
+    static var numberOfUses = [
+        WeaponName.sword: 0,
+        WeaponName.axe: 0,
+        WeaponName.rocket: 0,
+        WeaponName.bandage: 0
+    ]
+    
+    static var numberOfAttacks = 0
+    static var numberOfCare = 0
+    
     /**
      Define if game is over (when only one team is alive)
      */
@@ -40,7 +50,7 @@ class Game {
     
     /**
      Generate random attack weapon
-     - returns: Attack weapon
+     - returns: Attack weapon instance
      */
     static func randomAttackWeapon() -> Weapon? {
         if Int.random(in: 1...3) == 1 {
@@ -56,15 +66,5 @@ class Game {
      */
     static func getWinner() -> Player {
         return self.players.filter{ $0.isAlive }[0]
-    }
-    
-    /**
-     Define game statistics
-     - returns: Array with name and value for each statistic
-     */
-    static func getStatistics() -> [String:Int] {
-        return [
-            "Nombre de tours": Game.round + 1
-        ]
     }
 }

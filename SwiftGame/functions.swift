@@ -129,7 +129,7 @@ func printFight() {
         let attackingCharacter = selectCharacter(from: actualPlayer)
         let defendingCharacter:Character
         
-        if attackingCharacter.type == .mage {
+        if attackingCharacter.type == .mage { // Care
             print("\nQuel personnage de votre équipe voulez-vous soigner ?")
             defendingCharacter = selectCharacter(from: actualPlayer, previouslySelected: attackingCharacter)
             
@@ -137,7 +137,10 @@ func printFight() {
             
             print("\n\(actualPlayer.name) a choisi de soigner son équipe...")
             print("\(defendingCharacter.name) récupére \(attackingCharacter.weapon.addingLifePoints) points de vie !")
-        } else {
+            
+            Game.numberOfUses[.bandage]! += 1
+            Game.numberOfCare += 1
+        } else { // Attack
             var weapon = attackingCharacter.weapon
             
             if let randomAttackWeapon = Game.randomAttackWeapon() {
@@ -154,6 +157,9 @@ func printFight() {
             print("\n\(actualPlayer.name) a choisi d'infliger des dégâts à l'équipe adverse...")
             print("\(attackingCharacter.name) contre \(defendingCharacter.name)...")
             print("\(defendingCharacter.name) perd \(weapon.removalLifePoints) points de vie !")
+            
+            Game.numberOfUses[weapon.name]! += 1
+            Game.numberOfAttacks += 1
         }
         
         if !defendingCharacter.isAlive {
@@ -187,8 +193,41 @@ func printStatistics() {
     print("         STATISTIQUES        ")
     print("-----------------------------\n")
     
-    for (name, value) in Game.getStatistics() {
-        print("\(name) : \(value)")
+    // Number of rounds
+    print("Nombre de tours : \(Game.round + 1)")
+    
+    // Number of attacks
+    print("Nombre d'attaques : \(Game.numberOfAttacks)")
+    
+    // Number of care
+    print("Nombre de soins : \(Game.numberOfCare)")
+    
+    // Most used weapon(s)
+    let maxNumberOfUses = Game.numberOfUses.values.max()!
+    let mostUsedWeapons = Game.numberOfUses.filter{ $0.value == maxNumberOfUses }
+    
+    if mostUsedWeapons.count > 1 {
+        print("Armes les plus utilisées avec \(maxNumberOfUses) coups chacune : ")
+        
+        for (weapon, _) in mostUsedWeapons {
+            print(" - \(weapon.rawValue)")
+        }
+    } else {
+        print("Arme la plus utilisée avec \(maxNumberOfUses) coups : \(mostUsedWeapons.first!.key.rawValue)")
+    }
+    
+    // Least used weapon(s)
+    let minNumberOfUses = Game.numberOfUses.values.min()!
+    let leastUsedWeapons = Game.numberOfUses.filter{ $0.value == minNumberOfUses }
+    
+    if leastUsedWeapons.count > 1 {
+        print("Armes les moins utilisées avec \(minNumberOfUses) coups chacune : ")
+        
+        for (weapon, _) in leastUsedWeapons {
+            print(" - \(weapon.rawValue)")
+        }
+    } else {
+        print("Arme le moins utilisée avec \(minNumberOfUses) coups : \(leastUsedWeapons.first!.key.rawValue)")
     }
 }
 
