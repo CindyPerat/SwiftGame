@@ -44,5 +44,24 @@ class Character {
      */
     func isTreated(with weapon: Weapon) {
         self.lifePoints += weapon.addingLifePoints
+        
+        switch (self.type) {
+        case .fighter:
+            if self.lifePoints > fighterStartingLifePoints {
+                self.lifePoints = fighterStartingLifePoints
+            }
+        case .mage:
+            if self.lifePoints > mageStartingLifePoints {
+                self.lifePoints = mageStartingLifePoints
+            }
+        case .colossus:
+            if self.lifePoints > colossusStartingLifePoints {
+                self.lifePoints = colossusStartingLifePoints
+            }
+        case .dwarf:
+            if self.lifePoints > dwarfStartingLifePoints {
+                self.lifePoints = dwarfStartingLifePoints
+            }
+        }
     }
 }
