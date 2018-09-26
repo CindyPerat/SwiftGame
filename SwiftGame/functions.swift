@@ -37,7 +37,7 @@ func printInitialization(test: Bool) {
         let player1 = Player(id: 1, name: "Cindy")
         player1.team.append(Fighter(id: 1, playerId: 1, name: "Toto"))
         player1.team.append(Mage(id: 2, playerId: 1, name: "Toutou"))
-        player1.team.append(Colossus(id: 3, playerId: 1, name: "Tutu"))
+        player1.team.append(Dwarf(id: 3, playerId: 1, name: "Tutu"))
         
         // ÉQUIPE 2
         let player2 = Player(id: 2, name: "Steve")
@@ -194,26 +194,26 @@ func printStatistics() {
     print("-----------------------------\n")
     
     // Number of rounds
-    print("Nombre de tours : \(Game.round + 1)")
+    print("  - Nombre de tours : \(Game.round + 1)")
     
     // Number of attacks
-    print("Nombre d'attaques : \(Game.numberOfAttacks)")
+    print("  - Nombre d'attaques : \(Game.numberOfAttacks)")
     
     // Number of care
-    print("Nombre de soins : \(Game.numberOfCare)")
+    print("  - Nombre de soins : \(Game.numberOfCare)")
     
     // Most used weapon(s)
     let maxNumberOfUses = Game.numberOfUses.values.max()!
     let mostUsedWeapons = Game.numberOfUses.filter{ $0.value == maxNumberOfUses }
     
     if mostUsedWeapons.count > 1 {
-        print("Armes les plus utilisées avec \(maxNumberOfUses) coups chacune : ")
+        print("  - Armes les plus utilisées avec \(maxNumberOfUses) coups chacune : ")
         
         for (weapon, _) in mostUsedWeapons {
-            print(" - \(weapon.rawValue)")
+            print("    - \(capitalizeFirstLetter(weapon.rawValue))")
         }
     } else {
-        print("Arme la plus utilisée avec \(maxNumberOfUses) coups : \(mostUsedWeapons.first!.key.rawValue)")
+        print("  - Arme la plus utilisée avec \(maxNumberOfUses) coups : \(mostUsedWeapons.first!.key.rawValue)")
     }
     
     // Least used weapon(s)
@@ -224,10 +224,10 @@ func printStatistics() {
         print("Armes les moins utilisées avec \(minNumberOfUses) coups chacune : ")
         
         for (weapon, _) in leastUsedWeapons {
-            print(" - \(weapon.rawValue)")
+            print("    - \(capitalizeFirstLetter(weapon.rawValue))")
         }
     } else {
-        print("Arme la moins utilisée avec \(minNumberOfUses) coups : \(leastUsedWeapons.first!.key.rawValue)")
+        print("  - Arme la moins utilisée avec \(minNumberOfUses) coups : \(leastUsedWeapons.first!.key.rawValue)")
     }
 }
 
@@ -280,10 +280,12 @@ func printSummary() {
         print("\nÉQUIPE \(player.id) : \(player.name)")
         
         for character in player.team {
-            print("  \(character.id). "
-                + capitalizeFirstLetter(character.name)
-                + " (\(capitalizeFirstLetter(character.type.rawValue)))"
-                + " : \(character.lifePoints) PDV")
+            if character.isAlive {
+                print("  \(character.id). "
+                    + capitalizeFirstLetter(character.name)
+                    + " (\(capitalizeFirstLetter(character.type.rawValue)))"
+                    + " : \(character.lifePoints) PDV")
+            }
         }
     }
 }
