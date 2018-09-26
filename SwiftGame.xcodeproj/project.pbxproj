@@ -21,6 +21,7 @@
 		C28FD3FC214663040062F485 /* Mage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28FD3FB214663040062F485 /* Mage.swift */; };
 		C28FD3FE214663330062F485 /* Colossus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28FD3FD214663330062F485 /* Colossus.swift */; };
 		C28FD400214663680062F485 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28FD3FF214663680062F485 /* Dwarf.swift */; };
+		C29F33CC215BBE0D0053382C /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29F33CB215BBE0D0053382C /* config.swift */; };
 		C2B474802152A2AE005D620E /* WeaponName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B4747F2152A2AE005D620E /* WeaponName.swift */; };
 		C2DB3544214BC29500D278DA /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB3543214BC29500D278DA /* functions.swift */; };
 		C2DB3546214BC2E100D278DA /* CharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DB3545214BC2E100D278DA /* CharacterType.swift */; };
@@ -54,6 +55,7 @@
 		C28FD3FB214663040062F485 /* Mage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mage.swift; sourceTree = "<group>"; };
 		C28FD3FD214663330062F485 /* Colossus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colossus.swift; sourceTree = "<group>"; };
 		C28FD3FF214663680062F485 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
+		C29F33CB215BBE0D0053382C /* config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
 		C2B4747F2152A2AE005D620E /* WeaponName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponName.swift; sourceTree = "<group>"; };
 		C2DB3543214BC29500D278DA /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functions.swift; sourceTree = "<group>"; };
 		C2DB3545214BC2E100D278DA /* CharacterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterType.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		C28FD3E921464E960062F485 /* SwiftGame */ = {
 			isa = PBXGroup;
 			children = (
+				C29F33CB215BBE0D0053382C /* config.swift */,
 				C2DB3543214BC29500D278DA /* functions.swift */,
 				C28FD3EA21464E960062F485 /* main.swift */,
 				C28FD3F5214655030062F485 /* Game.swift */,
@@ -179,6 +182,7 @@
 				C22FF214215247B9007B3812 /* Weapon.swift in Sources */,
 				C22FF21A21524876007B3812 /* Axe.swift in Sources */,
 				C28FD3EB21464E960062F485 /* main.swift in Sources */,
+				C29F33CC215BBE0D0053382C /* config.swift in Sources */,
 				C28FD3F6214655030062F485 /* Game.swift in Sources */,
 				C28FD3FC214663040062F485 /* Mage.swift in Sources */,
 				C22FF21821524833007B3812 /* Sword.swift in Sources */,

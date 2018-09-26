@@ -8,6 +8,6 @@
 
 class Colossus: Character {
     init(id: Int, playerId: Int, name: String) {
-        super.init(id: id, playerId: playerId, name: name, type: .colossus, lifePoints: 200, weapon: Rocket())
+        super.init(id: id, playerId: playerId, name: name, type: .colossus, lifePoints: colossusStartingLifePoints, weapon: Rocket())
     }
 }

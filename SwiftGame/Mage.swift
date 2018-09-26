@@ -8,6 +8,6 @@
 
 class Mage: Character {
     init(id: Int, playerId: Int, name: String) {
-        super.init(id: id, playerId: playerId, name: name, type: .mage, lifePoints: 100, weapon: Bandage())
+        super.init(id: id, playerId: playerId, name: name, type: .mage, lifePoints: mageStartingLifePoints, weapon: Bandage())
     }
 }
