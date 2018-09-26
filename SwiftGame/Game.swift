@@ -31,6 +31,18 @@ class Game {
         return playersAlive == 1 ? true : false
     }
     
+    static func isCharacterNameUnique(_ nameToCheck: String) -> Bool {
+        for player in Game.players {
+            for character in player.team {
+                if nameToCheck.lowercased() == character.name.lowercased() {
+                    return false
+                }
+            }
+        }
+    
+        return true
+    }
+    
     /**
      Define attacking player
      - returns: Attacking player

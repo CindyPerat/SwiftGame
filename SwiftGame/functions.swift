@@ -53,26 +53,35 @@ func printInitialization(test: Bool) {
             print("\n-----------------------------")
             print("           ÉQUIPE \(playerId)       ")
             print("-----------------------------")
-            print("Nom du joueur : ", terminator: "")
             
             var playerName = ""
-            if let choice = readLine() {
-                playerName = choice
-            }
+            
+            repeat {
+                print("Nom du joueur : ", terminator: "")
+                
+                if let choice = readLine() {
+                    playerName = choice
+                }
+            } while playerName.isEmpty
             
             let player = Player(id: playerId, name: playerName)
+            Game.players.append(player)
             
             // 3 PERSONNAGES PAR ÉQUIPE
             for characterId in 1...player.numberOfCharacters {
                 print("\n-----------------------------")
                 print("         PERSONNAGE \(characterId)     ")
                 print("-----------------------------")
-                print("Nom : ", terminator: "")
                 
                 var characterName = ""
-                if let choice = readLine() {
-                    characterName = choice
-                }
+                
+                repeat {
+                    print("Nom : ", terminator: "")
+                    
+                    if let choice = readLine() {
+                        characterName = choice
+                    }
+                } while !Game.isCharacterNameUnique(characterName) || characterName.isEmpty
                 
                 print("\nType :")
                 print("  1. " + capitalizeFirstLetter(CharacterType.fighter.rawValue))
@@ -96,12 +105,11 @@ func printInitialization(test: Bool) {
                     }
                 }
             }
-            
-            Game.players.append(player)
         }
     }
     
     printSummary()
+    pressEnterToContinue()
 }
 
 /**
