@@ -227,7 +227,7 @@ func printStatistics() {
             print(" - \(weapon.rawValue)")
         }
     } else {
-        print("Arme le moins utilisée avec \(minNumberOfUses) coups : \(leastUsedWeapons.first!.key.rawValue)")
+        print("Arme la moins utilisée avec \(minNumberOfUses) coups : \(leastUsedWeapons.first!.key.rawValue)")
     }
 }
 
