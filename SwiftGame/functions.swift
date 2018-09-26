@@ -36,13 +36,13 @@ func printInitialization(test: Bool) {
         // ÉQUIPE 1
         let player1 = Player(id: 1, name: "Cindy")
         player1.team.append(Fighter(id: 1, playerId: 1, name: "Toto"))
-        player1.team.append(Mage(id: 2, playerId: 1, name: "Toutou"))
-        player1.team.append(Dwarf(id: 3, playerId: 1, name: "Tutu"))
+        player1.team.append(Dwarf(id: 2, playerId: 1, name: "Tutu"))
+        player1.team.append(Mage(id: 3, playerId: 1, name: "Toutou"))
         
         // ÉQUIPE 2
         let player2 = Player(id: 2, name: "Steve")
-        player2.team.append(Dwarf(id: 1, playerId: 2, name: "Titi"))
-        player2.team.append(Fighter(id: 2, playerId: 2, name: "Best Fighter Ever"))
+        player2.team.append(Fighter(id: 1, playerId: 2, name: "Best Fighter Ever"))
+        player2.team.append(Dwarf(id: 2, playerId: 2, name: "Titi"))
         player2.team.append(Mage(id: 3, playerId: 2, name: "Best Mage Ever"))
         
         Game.players.append(player1)
@@ -194,7 +194,7 @@ func printStatistics() {
     print("-----------------------------\n")
     
     // Number of rounds
-    print("  - Nombre de tours : \(Game.round + 1)")
+    print("  - Nombre de tours : \(Game.round)")
     
     // Number of attacks
     print("  - Nombre d'attaques : \(Game.numberOfAttacks)")
@@ -210,7 +210,7 @@ func printStatistics() {
         print("  - Armes les plus utilisées avec \(maxNumberOfUses) coups chacune : ")
         
         for (weapon, _) in mostUsedWeapons {
-            print("    - \(capitalizeFirstLetter(weapon.rawValue))")
+            print("      - \(capitalizeFirstLetter(weapon.rawValue))")
         }
     } else {
         print("  - Arme la plus utilisée avec \(maxNumberOfUses) coups : \(mostUsedWeapons.first!.key.rawValue)")
@@ -221,10 +221,10 @@ func printStatistics() {
     let leastUsedWeapons = Game.numberOfUses.filter{ $0.value == minNumberOfUses }
     
     if leastUsedWeapons.count > 1 {
-        print("Armes les moins utilisées avec \(minNumberOfUses) coups chacune : ")
+        print("  - Armes les moins utilisées avec \(minNumberOfUses) coups chacune : ")
         
         for (weapon, _) in leastUsedWeapons {
-            print("    - \(capitalizeFirstLetter(weapon.rawValue))")
+            print("      - \(capitalizeFirstLetter(weapon.rawValue))")
         }
     } else {
         print("  - Arme la moins utilisée avec \(minNumberOfUses) coups : \(leastUsedWeapons.first!.key.rawValue)")
@@ -256,9 +256,9 @@ func selectCharacter(from player: Player, previouslySelected: Character? = nil) 
     while (true) {
         print("Numéro du personnage : ", terminator: "")
         
-        if let selectedCharacter = readLine() { // Si la réponse n'est pas vide
-            if let characterId = Int(selectedCharacter) { // Si un nombre a été entré
-                let character = characters.filter{ $0.id == characterId } // Si ce nombre correspond à un personnage de l'équipe
+        if let selectedCharacter = readLine() { // If response isn't empty
+            if let characterId = Int(selectedCharacter) { // If a number has been entered
+                let character = characters.filter{ $0.id == characterId } // If this number matches vith a character
                 
                 if !character.isEmpty {
                     return character[0]
