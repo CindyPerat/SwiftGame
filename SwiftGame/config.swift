@@ -12,7 +12,7 @@ let dwarfStartingLifePoints = 20
  Constants for weapons
  */
 
-// Removal life points
+// Removal and adding life points
 let swordRemovalLifePoints = 10
 let swordAddingLifePoints = 0
 
