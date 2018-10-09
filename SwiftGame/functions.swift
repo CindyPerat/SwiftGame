@@ -6,6 +6,8 @@
 //  Copyright © 2018 Cindy Perat. All rights reserved.
 //
 
+import Foundation
+
 /**
  Uppercase first letter of text
  - parameter text: Text to edit
@@ -279,7 +281,7 @@ func selectCharacter(from player: Player, previouslySelected: Character? = nil) 
 /**
  Display life points for each character
  */
-func printSummary() {
+/*func printSummary() {
     print("\n-----------------------------")
     print("           RÉSUMÉ            ")
     print("-----------------------------")
@@ -295,5 +297,40 @@ func printSummary() {
                     + " : \(character.lifePoints) PDV")
             }
         }
+    }
+}*/
+
+func printSummary() {
+    let line = "".padding(toLength: 90, withPad: "-", startingAt: 0)
+    
+    print("\n" + line)
+    print(" RÉSUMÉ")
+    print(line)
+    
+    for player in Game.players {
+        print("\n ÉQUIPE \(player.id) : \(player.name)".padding(toLength: 90, withPad: " ", startingAt: 0))
+        print(line)
+        print(" ", terminator: "")
+        
+        let headers = ["Nom du personnage", "Type", "PDV"]
+        for header in headers {
+            print(header.padding(toLength: 30, withPad: " ", startingAt: 0), terminator: "")
+        }
+        
+        print("\n" + line)
+        
+        for character in player.team {
+            if character.isAlive {
+                let name = capitalizeFirstLetter(character.name)
+                let type = capitalizeFirstLetter(character.type.rawValue)
+                let lifePoints = String(character.lifePoints)
+                
+                print(" " + name.padding(toLength: 30, withPad: " ", startingAt: 0)
+                    + type.padding(toLength: 30, withPad: " ", startingAt: 0)
+                    + lifePoints.padding(toLength: 30, withPad: " ", startingAt: 0))
+            }
+        }
+        
+        print(line)
     }
 }
