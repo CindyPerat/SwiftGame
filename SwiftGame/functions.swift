@@ -281,25 +281,6 @@ func selectCharacter(from player: Player, previouslySelected: Character? = nil) 
 /**
  Display life points for each character
  */
-/*func printSummary() {
-    print("\n-----------------------------")
-    print("           RÉSUMÉ            ")
-    print("-----------------------------")
-    
-    for player in Game.players {
-        print("\nÉQUIPE \(player.id) : \(player.name)")
-        
-        for character in player.team {
-            if character.isAlive {
-                print("  \(character.id). "
-                    + capitalizeFirstLetter(character.name)
-                    + " (\(capitalizeFirstLetter(character.type.rawValue)))"
-                    + " : \(character.lifePoints) PDV")
-            }
-        }
-    }
-}*/
-
 func printSummary() {
     let line = "".padding(toLength: 90, withPad: "-", startingAt: 0)
     
