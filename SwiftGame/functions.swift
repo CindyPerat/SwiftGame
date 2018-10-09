@@ -37,15 +37,15 @@ func printInitialization(test: Bool) {
         
         // ÉQUIPE 1
         let player1 = Player(id: 1, name: "Cindy")
-        player1.team.append(Fighter(id: 1, playerId: 1, name: "Toto"))
-        player1.team.append(Dwarf(id: 2, playerId: 1, name: "Tutu"))
-        player1.team.append(Mage(id: 3, playerId: 1, name: "Toutou"))
+        player1.team.append(Fighter(id: 1, playerId: 1, name: "Oops"))
+        player1.team.append(Dwarf(id: 2, playerId: 1, name: "Bobo"))
+        player1.team.append(Mage(id: 3, playerId: 1, name: "Dingo"))
         
         // ÉQUIPE 2
         let player2 = Player(id: 2, name: "Steve")
-        player2.team.append(Fighter(id: 1, playerId: 2, name: "Best Fighter Ever"))
+        player2.team.append(Fighter(id: 1, playerId: 2, name: "Molly"))
         player2.team.append(Dwarf(id: 2, playerId: 2, name: "Titi"))
-        player2.team.append(Mage(id: 3, playerId: 2, name: "Best Mage Ever"))
+        player2.team.append(Mage(id: 3, playerId: 2, name: "Gliter"))
         
         Game.players.append(player1)
         Game.players.append(player2)
